@@ -5,7 +5,7 @@ import java.util.*;
 class Deck {
     private List<Card> cards;
     private static final String[] SUITS = {"Spades", "Hearts", "Diamonds", "Clubs"};
-    private static final String[] RANKS = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+    private static final String[] RANKS = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
     
     public Deck() {
         cards = new ArrayList<>();

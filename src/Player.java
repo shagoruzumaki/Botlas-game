@@ -43,9 +43,9 @@ class Player {
     }
     
     public void displayHand() {
-        System.out.print(name + "'s hand: ");
+        System.out.println(name + "'s hand: ");
         for (int i = 0; i < hand.size(); i++) {
-            System.out.print((i + 1) + ":" + hand.get(i) + " ");
+            System.out.println((i + 1) + ": " + hand.get(i) + " ");
         }
         System.out.println();
     }

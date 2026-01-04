@@ -57,15 +57,9 @@ public class CardSuitGame {
             if (name.isEmpty()) {
                 name = "Player " + i;
             }
-            
             boolean isComputer = false;
-            if (numPlayers == 2 && i == 2) {
-                System.out.print("Should " + name + " be computer-controlled? (y/n): ");
-                String response = scanner.nextLine().trim().toLowerCase();
-                isComputer = response.equals("y");
-                if (isComputer) {
-                    name = name + " (CPU)";
-                }
+            if(i==2 && name.equalsIgnoreCase("Computer")){
+                isComputer = true;
             }
             
             players.add(new Player(name, isComputer));
@@ -122,15 +116,9 @@ public class CardSuitGame {
             
             // Step 2: Calculate initial suit scores
             Map<String, Integer> suitScores = player.calculateSuitScores();
-            System.out.println("\nSuit scores:");
-            System.out.println("  Spades: " + suitScores.get("Spades"));
-            System.out.println("  Hearts: " + suitScores.get("Hearts"));
-            System.out.println("  Diamonds: " + suitScores.get("Diamonds"));
-            System.out.println("  Clubs: " + suitScores.get("Clubs"));
             
             String highestSuit = player.getHighestScoringSuit();
             int highestScore = player.getHighestSuitScore();
-            System.out.println("Highest scoring suit: " + highestSuit + " (" + highestScore + " points)");
             
             // Step 3: Choose bonus suit
             String bonusSuit;
@@ -158,11 +146,6 @@ public class CardSuitGame {
             replay.setFinalHand(player.getHand());
             
             suitScores = player.calculateSuitScores();
-            System.out.println("\nFinal suit scores:");
-            System.out.println("  Spades: " + suitScores.get("Spades"));
-            System.out.println("  Hearts: " + suitScores.get("Hearts"));
-            System.out.println("  Diamonds: " + suitScores.get("Diamonds"));
-            System.out.println("  Clubs: " + suitScores.get("Clubs"));
             
             // Step 6 & 7: Calculate final score with bonus
             highestSuit = player.getHighestScoringSuit();
@@ -183,6 +166,10 @@ public class CardSuitGame {
             player.addRoundScore(roundScore);
             player.addRoundReplay(replay);
             System.out.println("Round score: " + roundScore);
+            System.out.println();
+            System.out.print("Press ENTER to continue...");
+            scanner.nextLine();
+
         }
     }
     
@@ -261,6 +248,8 @@ public class CardSuitGame {
     
     private List<Integer> swapCardsComputer(Player player, String bonusSuit) {
         System.out.println("\n[CPU deciding which cards to swap...]");
+        System.out.print("Press ENTER to continue...");
+            scanner.nextLine();
         
         List<Integer> positionsToSwap = player.computerChooseCardsToSwap(bonusSuit);
         
@@ -282,6 +271,8 @@ public class CardSuitGame {
         for (int pos : positionsToSwap) {
             System.out.print(pos + " ");
         }
+        System.out.print("Press ENTER to continue...");
+        scanner.nextLine();
         System.out.print(" (Cards: ");
         for (Card card : droppedCards) {
             System.out.print(card + " ");
